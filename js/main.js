@@ -5,8 +5,8 @@ const app = Vue.createApp({
         return {
             intro: 'Welcome to my Vue template',
             carList:[],
-            newCar: { vendor: '', model: '', price: 0}
-
+            newCar: { vendor: '', model: '', price: 0},
+            statusCode: null
         }
     },
     methods: {
@@ -18,11 +18,15 @@ const app = Vue.createApp({
             .then(
                 function(response){
                     console.log(response)
+
+                    console.log(response.data)
+                    this.statusCode = response.status
                 }
             )
             .catch(
                 function(error){
                     console.log(error)
+                    this.statusCode = error.response.status
                 }
             )
 
@@ -35,11 +39,13 @@ const app = Vue.createApp({
                 response => {
                     console.log(response)
                     this.carList = response.data
+                    this.statusCode = response.status
                 }
             )
             .catch(
                  error => {
                     console.log(error)
+                    this.statusCode = error.response.status
                  } 
             )
 
@@ -51,9 +57,9 @@ const app = Vue.createApp({
         }
     },
     computed: {
-        myComputed() {
-            return ''
-        },
+        getStatus() {
+            return this.statusCode
+        }
         
     }
 })

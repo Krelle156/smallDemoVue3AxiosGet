@@ -21,15 +21,17 @@
       <input type="text" v-model="newCar.model" placeholder="Model"/>
       <input type="text" v-model="newCar.price" placeholder="Price"/>
 
-      {{newCar}}
 
       <button @click="postCar">Add a car</button>
+
+
+      <h3>Status of query: {{ getStatus }}</h3>
 
 
       <button v-on:click="getAllCars">Get Cars</button>
 
       <ul>
-        <li v-for="car in carList">{{car.vendor}} - {{car.model}}</li>
+        <li v-for="car in carList">{{car.vendor}} - {{car.model}} - {{car.price}}</li>
       </ul>
 
 
