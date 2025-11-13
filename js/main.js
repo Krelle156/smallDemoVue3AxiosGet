@@ -5,11 +5,26 @@ const app = Vue.createApp({
         return {
             intro: 'Welcome to my Vue template',
             carList:[],
+            newCar: { vendor: '', model: '', price: 0}
 
         }
     },
     methods: {
         myMethod(){
+
+        },
+        postCar() {
+            axios.post(baseUrl, this.newCar)
+            .then(
+                function(response){
+                    console.log(response)
+                }
+            )
+            .catch(
+                function(error){
+                    console.log(error)
+                }
+            )
 
         },
         getAllCars(){
@@ -31,6 +46,9 @@ const app = Vue.createApp({
 
 
         },
+        clearNewCar(){
+            this.newCar = { vendor: '', model: '', price: 0}
+        }
     },
     computed: {
         myComputed() {

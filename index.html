@@ -14,6 +14,18 @@
 
       <h1>{{ intro }}</h1>
       
+
+
+
+      <input type="text" v-model="newCar.vendor" placeholder="Vendor"/>
+      <input type="text" v-model="newCar.model" placeholder="Model"/>
+      <input type="text" v-model="newCar.price" placeholder="Price"/>
+
+      {{newCar}}
+
+      <button @click="postCar">Add a car</button>
+
+
       <button v-on:click="getAllCars">Get Cars</button>
 
       <ul>
