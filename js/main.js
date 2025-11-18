@@ -16,15 +16,18 @@ const app = Vue.createApp({
         postCar() {
             axios.post(baseUrl, this.newCar)
             .then(
-                function(response){
+                response => {
                     console.log(response)
 
                     console.log(response.data)
+
+                    this.getAllCars()
+                    this.clearNewCar()
                     this.statusCode = response.status
                 }
             )
             .catch(
-                function(error){
+                error => {
                     console.log(error)
                     this.statusCode = error.response.status
                 }
@@ -52,13 +55,28 @@ const app = Vue.createApp({
 
 
         },
+        deleteCar(id){
+            axios.delete(baseUrl + '/' + id).then(
+                response => {
+                    console.log(response)
+                    this.statusCode = response.status
+                    this.getAllCars()
+                }
+            )
+            .catch(
+                error => {
+                    console.log(error)
+                    this.statusCode = error.response.status
+                }
+            )
+        },
         clearNewCar(){
             this.newCar = { vendor: '', model: '', price: 0}
         }
     },
     computed: {
         getStatus() {
-            return this.statusCode
+            
         }
         
     }
