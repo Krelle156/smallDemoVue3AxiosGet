@@ -29,6 +29,7 @@
 
 
       <button v-on:click="getAllCars">Get Cars</button>
+      <button v-on:click="sortByPrice">Sort cars by Price</button>
 
       <ul>
         <li v-for="car in carList">
@@ -43,11 +44,11 @@
     <!-- Import App -->
     <script src="./js/main.js"></script>
 
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <!-- Mount App -->
     <script>
       const mountedApp = app.mount('#app')
     </script>
-    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
 
     
     
